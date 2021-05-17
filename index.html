@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/index.css" />
 
     <title>Task List</title>
   </head>
@@ -104,7 +105,15 @@
       </div>
     </div>
 
-    <div class="container">
+    <div
+      class="
+        container
+        d-flex
+        flex-column
+        justify-content-center
+        align-items-center
+      "
+    >
       <h1 class="text-center my-3">Job Task List</h1>
       <div class="d-grid gap-2 col-6 mx-auto">
         <button
@@ -116,169 +125,121 @@
           Add Task
         </button>
       </div>
-
-      <div class="container-fluid mt-5">
-        <div class="row">
-          <div
-            class="col-md-4 mx-3 card border-dark mb-3"
-            style="max-width: 18rem"
+      <div class="container mt-5">
+        <div class="content">
+          <ul
+            class="
+              list-group
+              d-flex
+              flex-row flex-wrap
+              justify-content-center
+              align-items-center
+            "
+            id="task-list"
           >
-            <div class="header mt-3 d-md-flex justify-content-between">
-              <h3>Task#</h3>
-              <button class="btn btn-danger">Delete</button>
-            </div>
-            <div class="card-body text-dark">
-              <p class="card-text">TaskName</p>
-              <p class="card-text">Description</p>
-              <p class="card-text">Assignee</p>
-              <p class="card-text">Due Date</p>
-              <p class="card-text">Status</p>
-            </div>
-            <div class="footer d-md-flex justify-content-between mb-3">
-              <button class="btn btn-success">Mark As Done</button>
-              <button class="btn btn-warning">Update Task</button>
-            </div>
-          </div>
-          <div
-            class="col-md-4 mx-3 card border-dark mb-3"
-            style="max-width: 18rem"
-          >
-            <div class="header mt-3 d-md-flex justify-content-between">
-              <h3>Task#</h3>
-              <button class="btn btn-danger">Delete</button>
-            </div>
-            <div class="card-body text-dark">
-              <p class="card-text">TaskName</p>
-              <p class="card-text">Description</p>
-              <p class="card-text">Assignee</p>
-              <p class="card-text">Due Date</p>
-              <p class="card-text">Status</p>
-            </div>
-            <div class="footer d-md-flex justify-content-between mb-3">
-              <button class="btn btn-success">Mark As Done</button>
-              <button class="btn btn-warning">Update Task</button>
-            </div>
-          </div>
-          <div
-            class="col-md-4 mx-3 card border-dark mb-3"
-            style="max-width: 18rem"
-          >
-            <div class="header mt-3 d-md-flex justify-content-between">
-              <h3>Task#</h3>
-              <button class="btn btn-danger">Delete</button>
-            </div>
-            <div class="card-body text-dark">
-              <p class="card-text">TaskName</p>
-              <p class="card-text">Description</p>
-              <p class="card-text">Assignee</p>
-              <p class="card-text">Due Date</p>
-              <p class="card-text">Status</p>
-            </div>
-            <div class="footer d-md-flex justify-content-between mb-3">
-              <button class="btn btn-success">Mark As Done</button>
-              <button class="btn btn-warning">Update Task</button>
-            </div>
-          </div>
-          <div
-            class="col-md-4 mx-3 card border-dark mb-3"
-            style="max-width: 18rem"
-          >
-            <div class="header mt-3 d-md-flex justify-content-between">
-              <h3>Task#</h3>
-              <button class="btn btn-danger">Delete</button>
-            </div>
-            <div class="card-body text-dark">
-              <p class="card-text">TaskName</p>
-              <p class="card-text">Description</p>
-              <p class="card-text">Assignee</p>
-              <p class="card-text">Due Date</p>
-              <p class="card-text">Status</p>
-            </div>
-            <div class="footer d-md-flex justify-content-between mb-3">
-              <button class="btn btn-success">Mark As Done</button>
-              <button class="btn btn-warning">Update Task</button>
-            </div>
-          </div>
-          <div
-            class="col-md-4 mx-3 card border-dark mb-3"
-            style="max-width: 18rem"
-          >
-            <div class="header mt-3 d-md-flex justify-content-between">
-              <h3>Task#</h3>
-              <button class="btn btn-danger">Delete</button>
-            </div>
-            <div class="card-body text-dark">
-              <p class="card-text">TaskName</p>
-              <p class="card-text">Description</p>
-              <p class="card-text">Assignee</p>
-              <p class="card-text">Due Date</p>
-              <p class="card-text">Status</p>
-            </div>
-            <div class="footer d-md-flex justify-content-between mb-3">
-              <button class="btn btn-success">Mark As Done</button>
-              <button class="btn btn-warning">Update Task</button>
-            </div>
-          </div>
-          <div
-            class="col-md-4 mx-3 card border-dark mb-3"
-            style="max-width: 18rem"
-          >
-            <div class="header mt-3 d-md-flex justify-content-between">
-              <h3>Task#</h3>
-              <button class="btn btn-danger">Delete</button>
-            </div>
-            <div class="card-body text-dark">
-              <p class="card-text">TaskName</p>
-              <p class="card-text">Description</p>
-              <p class="card-text">Assignee</p>
-              <p class="card-text">Due Date</p>
-              <p class="card-text">Status</p>
-            </div>
-            <div class="footer d-md-flex justify-content-between mb-3">
-              <button class="btn btn-success">Mark As Done</button>
-              <button class="btn btn-warning">Update Task</button>
-            </div>
-          </div>
-          <div
-            class="col-md-4 mx-3 card border-dark mb-3"
-            style="max-width: 18rem"
-          >
-            <div class="header mt-3 d-md-flex justify-content-between">
-              <h3>Task#</h3>
-              <button class="btn btn-danger">Delete</button>
-            </div>
-            <div class="card-body text-dark">
-              <p class="card-text">TaskName</p>
-              <p class="card-text">Description</p>
-              <p class="card-text">Assignee</p>
-              <p class="card-text">Due Date</p>
-              <p class="card-text">Status</p>
-            </div>
-            <div class="footer d-md-flex justify-content-between mb-3">
-              <button class="btn btn-success">Mark As Done</button>
-              <button class="btn btn-warning">Update Task</button>
-            </div>
-          </div>
-          <div
-            class="col-md-4 mx-3 card border-dark mb-3"
-            style="max-width: 18rem"
-          >
-            <div class="header mt-3 d-md-flex justify-content-between">
-              <h3>Task#</h3>
-              <button class="btn btn-danger">Delete</button>
-            </div>
-            <div class="card-body text-dark">
-              <p class="card-text">TaskName</p>
-              <p class="card-text">Description</p>
-              <p class="card-text">Assignee</p>
-              <p class="card-text">Due Date</p>
-              <p class="card-text">Status</p>
-            </div>
-            <div class="footer d-md-flex justify-content-between mb-3">
-              <button class="btn btn-success">Mark As Done</button>
-              <button class="btn btn-warning">Update Task</button>
-            </div>
-          </div>
+            <li class="mx-3 card border-dark mb-3">
+              <div class="mx-3 header mt-3 d-md-flex justify-content-between">
+                <h3>Task#</h3>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="card-body text-dark">
+                <p class="card-text">TaskName</p>
+                <p class="card-text">Description</p>
+                <p class="card-text">Assignee</p>
+                <p class="card-text">Due Date</p>
+                <p class="card-text">Status</p>
+              </div>
+              <div class="footer d-md-flex mx-3 justify-content-between mb-3">
+                <button class="btn btn-success">Mark As Done</button>
+                <button class="btn btn-warning">Update Task</button>
+              </div>
+            </li>
+            <li class="mx-3 card border-dark mb-3">
+              <div class="mx-3 header mt-3 d-md-flex justify-content-between">
+                <h3>Task#</h3>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="card-body text-dark">
+                <p class="card-text">TaskName</p>
+                <p class="card-text">Description</p>
+                <p class="card-text">Assignee</p>
+                <p class="card-text">Due Date</p>
+                <p class="card-text">Status</p>
+              </div>
+              <div class="footer d-md-flex mx-3 justify-content-between mb-3">
+                <button class="btn btn-success">Mark As Done</button>
+                <button class="btn btn-warning">Update Task</button>
+              </div>
+            </li>
+            <li class="mx-3 card border-dark mb-3">
+              <div class="mx-3 header mt-3 d-md-flex justify-content-between">
+                <h3>Task#</h3>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="card-body text-dark">
+                <p class="card-text">TaskName</p>
+                <p class="card-text">Description</p>
+                <p class="card-text">Assignee</p>
+                <p class="card-text">Due Date</p>
+                <p class="card-text">Status</p>
+              </div>
+              <div class="footer d-md-flex mx-3 justify-content-between mb-3">
+                <button class="btn btn-success">Mark As Done</button>
+                <button class="btn btn-warning">Update Task</button>
+              </div>
+            </li>
+            <li class="mx-3 card border-dark mb-3">
+              <div class="mx-3 header mt-3 d-md-flex justify-content-between">
+                <h3>Task#</h3>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="card-body text-dark">
+                <p class="card-text">TaskName</p>
+                <p class="card-text">Description</p>
+                <p class="card-text">Assignee</p>
+                <p class="card-text">Due Date</p>
+                <p class="card-text">Status</p>
+              </div>
+              <div class="footer d-md-flex mx-3 justify-content-between mb-3">
+                <button class="btn btn-success">Mark As Done</button>
+                <button class="btn btn-warning">Update Task</button>
+              </div>
+            </li>
+            <li class="mx-3 card border-dark mb-3">
+              <div class="mx-3 header mt-3 d-md-flex justify-content-between">
+                <h3>Task#</h3>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="card-body text-dark">
+                <p class="card-text">TaskName</p>
+                <p class="card-text">Description</p>
+                <p class="card-text">Assignee</p>
+                <p class="card-text">Due Date</p>
+                <p class="card-text">Status</p>
+              </div>
+              <div class="footer d-md-flex mx-3 justify-content-between mb-3">
+                <button class="btn btn-success">Mark As Done</button>
+                <button class="btn btn-warning">Update Task</button>
+              </div>
+            </li>
+            <li class="mx-3 card border-dark mb-3">
+              <div class="mx-3 header mt-3 d-md-flex justify-content-between">
+                <h3>Task#</h3>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="card-body text-dark">
+                <p class="card-text">TaskName</p>
+                <p class="card-text">Description</p>
+                <p class="card-text">Assignee</p>
+                <p class="card-text">Due Date</p>
+                <p class="card-text">Status</p>
+              </div>
+              <div class="footer d-md-flex mx-3 justify-content-between mb-3">
+                <button class="btn btn-success">Mark As Done</button>
+                <button class="btn btn-warning">Update Task</button>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
