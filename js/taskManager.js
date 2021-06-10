@@ -12,7 +12,7 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
     newHtml = `<li class="mx-3 card border-dark mb-3" data-task-id="${id}">
               <div class="mx-3 header mt-3 d-flex justify-content-between">
                 <h3>TASK#${id + 1}</h3>
-                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-danger btn-delete">Delete</button>
               </div>
               <div class="card-body text-dark ">
                 <p class="card-text taskName"><span>Task Name:</span> ${name}</p>
@@ -31,7 +31,7 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
     newHtml = `<li class="mx-3 card border-dark mb-3" data-task-id="${id}">
               <div class="mx-3 header mt-3 d-flex justify-content-between">
                 <h3>TASK#${id + 1}</h3>
-                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-danger btn-delete">Delete</button>
               </div>
               <div class="card-body text-dark ">
                 <p class="card-text taskName"><span>Task Name:</span> ${name}</p>
@@ -124,5 +124,17 @@ class TaskManager {
       const currentId = localStorage.getItem("currentId");
       this.currentId = Number(currentId);
     }
+  }
+
+  deleteTask(taskId) {
+    const updateTask = [];
+
+    for (let i = 0; i < this.tasks.length; i++) {
+      const task = this.tasks[i];
+      if (task.id !== taskId) {
+        updateTask.push(task);
+      }
+    }
+    this.tasks = updateTask;
   }
 }

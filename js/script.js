@@ -86,6 +86,7 @@ let itemList = document.querySelector("#task-list");
 itemList.addEventListener("click", updateStatus);
 
 function updateStatus(e) {
+  //mark as done
   if (e.target.classList.contains("btnMark")) {
     const parentTask = e.target.parentElement.parentElement;
     console.log(parentTask);
@@ -98,5 +99,23 @@ function updateStatus(e) {
     taskManager.saveStorage();
     // Render the tasks
     taskManager.render();
+  }
+
+  //delete
+  if (e.target.classList.contains("btn-delete")) {
+    if (confirm("Are you sure you want to delete this task?")) {
+      const parentTask = e.target.parentElement.parentElement;
+      const taskId = Number(parentTask.dataset.taskId);
+      let alert = document.querySelector("#deleteAlert");
+      taskManager.deleteTask(taskId);
+      taskManager.saveStorage();
+      // Render the tasks
+      taskManager.render();
+
+      alert.classList.remove("collapse");
+      setTimeout(function () {
+        alert.classList.add("collapse");
+      }, 2000);
+    }
   }
 }
