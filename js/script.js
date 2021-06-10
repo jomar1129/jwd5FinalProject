@@ -1,4 +1,9 @@
 const taskManager = new TaskManager(0);
+
+// load the storage data
+taskManager.loadStorage();
+// to render current data into html
+taskManager.render();
 form = document.querySelector("#taskForm");
 
 form.addEventListener("submit", submitItem);
@@ -10,10 +15,7 @@ function submitItem(event) {
   let due = document.querySelector("#inputDate");
   let status = document.querySelector("#inputStatus");
   let alert = document.querySelector("#alert");
-  // let myModal = new bootstrap.Modal(document.getElementById("myModal"));
-  // let modal = document.querySelector("#myModal");
-  // var myAlert = document.getElementById("myAlert");
-  // var bsAlert = new bootstrap.Alert(myAlert);
+  let myModal = new bootstrap.Modal(document.getElementById("myModal"));
   let fail = 0;
 
   event.preventDefault();
@@ -63,6 +65,7 @@ function submitItem(event) {
       due.value,
       status.value
     );
+    myModal.hide();
 
     alert.classList.remove("collapse");
     setTimeout(function () {
@@ -70,6 +73,30 @@ function submitItem(event) {
     }, 2000);
 
     clearAll();
+    //save locally
+    taskManager.saveStorage();
+    taskManager.render();
+  }
+}
+
+/// Mark as Done
+
+let itemList = document.querySelector("#task-list");
+
+itemList.addEventListener("click", updateStatus);
+
+function updateStatus(e) {
+  if (e.target.classList.contains("btnMark")) {
+    const parentTask = e.target.parentElement.parentElement;
+    console.log(parentTask);
+    const taskId = Number(parentTask.dataset.taskId);
+    console.log(taskId);
+    const task = taskManager.getId(taskId);
+    // console.log(task.id);
+    task.status = "Done";
+    //save locally
+    taskManager.saveStorage();
+    // Render the tasks
     taskManager.render();
   }
 }
