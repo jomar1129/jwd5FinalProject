@@ -9,7 +9,11 @@ function submitItem(event) {
   let assignee = document.querySelector("#inputAssignee");
   let due = document.querySelector("#inputDate");
   let status = document.querySelector("#inputStatus");
-  let modal = document.querySelector("#myModal");
+  let alert = document.querySelector("#alert");
+  // let myModal = new bootstrap.Modal(document.getElementById("myModal"));
+  // let modal = document.querySelector("#myModal");
+  // var myAlert = document.getElementById("myAlert");
+  // var bsAlert = new bootstrap.Alert(myAlert);
   let fail = 0;
 
   event.preventDefault();
@@ -59,6 +63,11 @@ function submitItem(event) {
       due.value,
       status.value
     );
+
+    alert.classList.remove("collapse");
+    setTimeout(function () {
+      alert.classList.add("collapse");
+    }, 2000);
 
     clearAll();
     taskManager.render();
