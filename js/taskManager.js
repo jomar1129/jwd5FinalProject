@@ -1,13 +1,13 @@
 const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
-  //   console.log(name);
-  //   console.log(description);
-  //   console.log(assignedTo);
-  //   console.log(dueDate);
-  //   console.log(status);
+  console.log(name);
+  console.log(description);
+  console.log(assignedTo);
+  console.log(dueDate);
+  console.log(status);
 
   let text = "";
   let newHtml = "";
-  if (status === "Done") {
+  if (status.toLowerCase() === "done") {
     text = "text-success";
     newHtml = `<li class="mx-3 card border-dark mb-3" data-task-id="${id}">
               <div class="mx-3 header mt-3 d-flex justify-content-between">
@@ -81,7 +81,7 @@ class TaskManager {
       const task = this.tasks[i];
       if (task.id === taskId) {
         getTask = task;
-        console.log(task.id);
+        // console.log(task.id);
       }
     }
     return getTask;
