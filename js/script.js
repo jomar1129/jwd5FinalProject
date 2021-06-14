@@ -118,4 +118,112 @@ function updateStatus(e) {
       }, 2000);
     }
   }
+
+  //update
+
+  if (e.target.classList.contains("btnUpdate")) {
+    const parentTask = e.target.parentElement.parentElement;
+    const taskId = Number(parentTask.dataset.taskId);
+    const task = taskManager.getId(taskId);
+    let taskName = document.querySelector("#updateTaskName");
+    let description = document.querySelector("#updateDescription");
+    let assignee = document.querySelector("#updateAssignee");
+    let due = document.querySelector("#updateDate");
+    let status = document.querySelector("#updateStatus");
+    let form = document.querySelector("#taskFormUpdate");
+
+    console.log(task.id);
+
+    taskName.value = task.name;
+    description.value = task.description;
+    assignee.value = task.assignedTo;
+    due.value = task.dueDate;
+    status.value = task.status.toUpperCase();
+    form.setAttribute("data-task-id", task.id);
+  }
+}
+
+// UPDATE FORM
+formUpdate = document.querySelector("#taskFormUpdate");
+
+formUpdate.addEventListener("submit", submitUpdateItem);
+
+function submitUpdateItem(event) {
+  let name = document.querySelector("#updateTaskName");
+  let description = document.querySelector("#updateDescription");
+  let assignee = document.querySelector("#updateAssignee");
+  let due = document.querySelector("#updateDate");
+  let status = document.querySelector("#updateStatus");
+  let alert = document.querySelector("#alertUpdate");
+  // let myModal = new bootstrap.Modal(document.getElementById("myModal"));
+  let fail = 0;
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  if (name.value.length > 5) {
+    name.classList.add("is-valid");
+    name.classList.remove("is-invalid");
+  } else {
+    name.classList.add("is-invalid");
+    name.classList.remove("is-valid");
+    fail++;
+  }
+
+  if (description.value.length > 5) {
+    description.classList.add("is-valid");
+    description.classList.remove("is-invalid");
+  } else {
+    description.classList.add("is-invalid");
+    description.classList.remove("is-valid");
+    fail++;
+  }
+
+  if (assignee.value.length > 5) {
+    assignee.classList.add("is-valid");
+    assignee.classList.remove("is-invalid");
+  } else {
+    assignee.classList.add("is-invalid");
+    assignee.classList.remove("is-valid");
+    fail++;
+  }
+
+  const clearAll = () => {
+    name.classList.remove("is-valid");
+    description.classList.remove("is-valid");
+    assignee.classList.remove("is-valid");
+    formUpdate.reset();
+  };
+
+  if (fail > 0) {
+    return;
+  } else {
+    let id = Number(formUpdate.getAttribute("data-task-id"));
+    console.log("awits" + id);
+    taskManager.updateTask(
+      id,
+      name.value,
+      description.value,
+      assignee.value,
+      due.value,
+      status.value
+    );
+    // taskManager.newTask(
+    //   name.value,
+    //   description.value,
+    //   assignee.value,
+    //   due.value,
+    //   status.value
+    // );
+
+    alert.classList.remove("collapse");
+    setTimeout(function () {
+      alert.classList.add("collapse");
+    }, 2000);
+
+    clearAll();
+    //save locally
+    taskManager.saveStorage();
+    taskManager.render();
+  }
 }

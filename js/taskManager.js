@@ -1,9 +1,9 @@
 const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
-  console.log(name);
-  console.log(description);
-  console.log(assignedTo);
-  console.log(dueDate);
-  console.log(status);
+  // console.log(name);
+  // console.log(description);
+  // console.log(assignedTo);
+  // console.log(dueDate);
+  // console.log(status);
 
   let text = "";
   let newHtml = "";
@@ -23,7 +23,7 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
               </div>
               <div class="footer d-sm-flex mx-3 justify-content-between mb-3">
                 <button class="btn btn-success collapse btnMark">Mark As Done</button>
-                <button class="btn btn-warning btnUpdate">Update Task</button>
+                <button data-bs-toggle="modal" data-bs-target="#myModalUpdate" class="btn btn-warning btnUpdate">Update Task</button>
               </div>
             </li>`;
   } else {
@@ -42,7 +42,7 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
               </div>
               <div class="footer d-sm-flex mx-3 justify-content-between mb-3">
                 <button class="btn btn-success  btnMark">Mark As Done</button>
-                <button class="btn btn-warning btnUpdate">Update Task</button>
+                <button  data-bs-toggle="modal" data-bs-target="#myModalUpdate" class="btn btn-warning btnUpdate">Update Task</button>
               </div>
             </li>`;
   }
@@ -57,11 +57,6 @@ class TaskManager {
   }
 
   newTask(name, description, assignedTo, dueDate, status) {
-    // console.log(name);
-    // console.log(description);
-    // console.log(assignedTo);
-    // console.log(dueDate);
-    // console.log(status);
     const task = {
       id: this.currentId++,
       name: name,
@@ -74,12 +69,29 @@ class TaskManager {
     this.tasks.push(task);
   }
 
+  updateTask(id, name, description, assignedTo, dueDate, status) {
+    const updatedTask = [];
+    for (let i = 0; i < this.tasks.length; i++) {
+      const task = this.tasks[i];
+      console.log(`task id ${task.id} and passed id ${id}`);
+      if (task.id === id) {
+        console.log(`task id ${task.name} and passed id ${name}`);
+        (task.name = name),
+          (task.description = description),
+          (task.assignedTo = assignedTo),
+          (task.dueDate = dueDate),
+          (task.status = status);
+      }
+    }
+  }
+
   getId(taskId) {
     console.log(taskId);
     let getTask;
     for (let i = 0; i < this.tasks.length; i++) {
       const task = this.tasks[i];
       if (task.id === taskId) {
+        console.log("test");
         getTask = task;
         // console.log(task.id);
       }
