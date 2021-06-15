@@ -18,7 +18,6 @@ function submitItem(event) {
   let myModal = new bootstrap.Modal(document.getElementById("myModal"));
   let fail = 0;
 
-  event.preventDefault();
   event.stopPropagation();
 
   if (name.value.length > 5) {
@@ -74,6 +73,8 @@ function submitItem(event) {
 
     clearAll();
     //save locally
+
+    event.preventDefault();
     taskManager.saveStorage();
     taskManager.render();
   }
@@ -81,9 +82,17 @@ function submitItem(event) {
 
 /// Mark as Done
 
-let itemList = document.querySelector("#task-list");
+let todolist = document.querySelector("#todo");
+let review = document.querySelector("#review");
+let inprogress = document.querySelector("#inprog");
+let done = document.querySelector("#done");
 
-itemList.addEventListener("click", updateStatus);
+// click events!
+
+todolist.addEventListener("click", updateStatus);
+review.addEventListener("click", updateStatus);
+inprogress.addEventListener("click", updateStatus);
+done.addEventListener("click", updateStatus);
 
 function updateStatus(e) {
   //mark as done
@@ -123,6 +132,7 @@ function updateStatus(e) {
 
   if (e.target.classList.contains("btnUpdate")) {
     const parentTask = e.target.parentElement.parentElement;
+    console.log(parentTask);
     const taskId = Number(parentTask.dataset.taskId);
     const task = taskManager.getId(taskId);
     let taskName = document.querySelector("#updateTaskName");
@@ -131,7 +141,7 @@ function updateStatus(e) {
     let due = document.querySelector("#updateDate");
     let status = document.querySelector("#updateStatus");
     let form = document.querySelector("#taskFormUpdate");
-
+    console.log("awit");
     console.log(task.id);
 
     taskName.value = task.name;

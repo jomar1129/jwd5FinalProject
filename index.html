@@ -8,7 +8,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/index.css" />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Task List</title>
   </head>
   <body>
@@ -139,7 +145,7 @@
 
     <div
       class="
-        container
+        container-fluid
         d-flex
         flex-column
         justify-content-center
@@ -165,120 +171,25 @@
         </div>
       </div>
       <div class="container-fluid mt-5">
-        <div class="content">
-          <ul
-            class="
-              list-group
-              d-flex
-              flex-row flex-wrap
-              justify-content-center
-              align-items-center
-            "
-            id="task-list"
-          >
-            <!-- <li class="mx-3 card border-dark mb-3">
-              <div class="mx-3 header mt-3 d-flex justify-content-between">
-                <h3>Task#</h3>
-                <button class="btn btn-danger">Delete</button>
-              </div>
-              <div class="card-body text-dark">
-                <p class="card-text">TaskName</p>
-                <p class="card-text">Description</p>
-                <p class="card-text">Assignee</p>
-                <p class="card-text">Due Date</p>
-                <p class="card-text">Status</p>
-              </div>
-              <div class="footer d-md-flex mx-3 justify-content-between mb-3">
-                <button class="btn btn-success">Mark As Done</button>
-                <button class="btn btn-warning">Update Task</button>
-              </div>
-            </li>
-            <li class="mx-3 card border-dark mb-3">
-              <div class="mx-3 header mt-3 d-md-flex justify-content-between">
-                <h3>Task#</h3>
-                <button class="btn btn-danger">Delete</button>
-              </div>
-              <div class="card-body text-dark">
-                <p class="card-text">TaskName</p>
-                <p class="card-text">Description</p>
-                <p class="card-text">Assignee</p>
-                <p class="card-text">Due Date</p>
-                <p class="card-text">Status</p>
-              </div>
-              <div class="footer d-md-flex mx-3 justify-content-between mb-3">
-                <button class="btn btn-success">Mark As Done</button>
-                <button class="btn btn-warning">Update Task</button>
-              </div>
-            </li>
-            <li class="mx-3 card border-dark mb-3">
-              <div class="mx-3 header mt-3 d-md-flex justify-content-between">
-                <h3>Task#</h3>
-                <button class="btn btn-danger">Delete</button>
-              </div>
-              <div class="card-body text-dark">
-                <p class="card-text">TaskName</p>
-                <p class="card-text">Description</p>
-                <p class="card-text">Assignee</p>
-                <p class="card-text">Due Date</p>
-                <p class="card-text">Status</p>
-              </div>
-              <div class="footer d-md-flex mx-3 justify-content-between mb-3">
-                <button class="btn btn-success">Mark As Done</button>
-                <button class="btn btn-warning">Update Task</button>
-              </div>
-            </li>
-            <li class="mx-3 card border-dark mb-3">
-              <div class="mx-3 header mt-3 d-md-flex justify-content-between">
-                <h3>Task#</h3>
-                <button class="btn btn-danger">Delete</button>
-              </div>
-              <div class="card-body text-dark">
-                <p class="card-text">TaskName</p>
-                <p class="card-text">Description</p>
-                <p class="card-text">Assignee</p>
-                <p class="card-text">Due Date</p>
-                <p class="card-text">Status</p>
-              </div>
-              <div class="footer d-md-flex mx-3 justify-content-between mb-3">
-                <button class="btn btn-success">Mark As Done</button>
-                <button class="btn btn-warning">Update Task</button>
-              </div>
-            </li>
-            <li class="mx-3 card border-dark mb-3">
-              <div class="mx-3 header mt-3 d-md-flex justify-content-between">
-                <h3>Task#</h3>
-                <button class="btn btn-danger">Delete</button>
-              </div>
-              <div class="card-body text-dark">
-                <p class="card-text">TaskName</p>
-                <p class="card-text">Description</p>
-                <p class="card-text">Assignee</p>
-                <p class="card-text">Due Date</p>
-                <p class="card-text">Status</p>
-              </div>
-              <div class="footer d-md-flex mx-3 justify-content-between mb-3">
-                <button class="btn btn-success">Mark As Done</button>
-                <button class="btn btn-warning">Update Task</button>
-              </div>
-            </li>
-            <li class="mx-3 card border-dark mb-3">
-              <div class="mx-3 header mt-3 d-md-flex justify-content-between">
-                <h3>Task#</h3>
-                <button class="btn btn-danger">Delete</button>
-              </div>
-              <div class="card-body text-dark">
-                <p class="card-text">TaskName</p>
-                <p class="card-text">Description</p>
-                <p class="card-text">Assignee</p>
-                <p class="card-text">Due Date</p>
-                <p class="card-text">Status</p>
-              </div>
-              <div class="footer d-md-flex mx-3 justify-content-between mb-3">
-                <button class="btn btn-success">Mark As Done</button>
-                <button class="btn btn-warning">Update Task</button>
-              </div>
-            </li> -->
-          </ul>
+        <div class="row">
+          <div class="col lg-6 mx-3 columns">
+            <div class="bg-todo"><h3 class="text-center">TODO</h3></div>
+            <ul class="list-group mt-3" id="todo"></ul>
+          </div>
+          <div class="col lg-6 mx-3 columns">
+            <div class="bg-review"><h3 class="text-center">REVIEW</h3></div>
+            <ul class="list-group mt-3" id="review"></ul>
+          </div>
+          <div class="col lg-6 mx-3 columns">
+            <div class="bg-inprogress">
+              <h3 class="text-center">INPROGRESS</h3>
+            </div>
+            <ul class="list-group mt-3" id="inprog"></ul>
+          </div>
+          <div class="col lg-6 mx-3 columns">
+            <div class="bg-done"><h3 class="text-center">DONE</h3></div>
+            <ul class="list-group mt-3" id="done"></ul>
+          </div>
         </div>
       </div>
     </div>

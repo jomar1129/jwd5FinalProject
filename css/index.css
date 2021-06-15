@@ -1,4 +1,4 @@
-body {
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -6,7 +6,6 @@ body {
 }
 
 .card {
-  width: 25%;
   background-color: #f4f4f4;
 }
 
@@ -18,4 +17,38 @@ body {
 .card-text > span {
   font-weight: 500;
   text-transform: uppercase;
+}
+
+.icons {
+  cursor: pointer;
+}
+
+/* headings */
+
+/* ul {
+  border: black 1px solid;
+} */
+
+.bg-todo {
+  border-radius: 10px;
+  padding: 5px 0px;
+  background-color: #2fc7f7;
+}
+
+.bg-done {
+  border-radius: 10px;
+  padding: 5px 0px;
+  background-color: #2ff761;
+}
+
+.bg-review {
+  border-radius: 10px;
+  padding: 5px 0px;
+  background-color: #e3f72f;
+}
+
+.bg-inprogress {
+  border-radius: 10px;
+  padding: 5px 0px;
+  background-color: #f7bb2f;
 }
