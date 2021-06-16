@@ -18,6 +18,7 @@ function submitItem(event) {
   let myModal = new bootstrap.Modal(document.getElementById("myModal"));
   let fail = 0;
 
+  event.preventDefault();
   event.stopPropagation();
 
   if (name.value.length > 5) {
@@ -74,7 +75,6 @@ function submitItem(event) {
     clearAll();
     //save locally
 
-    event.preventDefault();
     taskManager.saveStorage();
     taskManager.render();
   }
