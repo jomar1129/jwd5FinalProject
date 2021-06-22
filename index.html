@@ -173,10 +173,13 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
         <a class="navbar-brand fw-bolder fst-italic " href="#"><h2 class = "text-white">PROTASK</h2></a>
-          <form class="d-flex flex-end">
+          <!-- <form class="d-flex flex-end">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-primary" type="submit">Search</button>
-          </form>
+          </form> -->
+          <div id = "weather">
+
+          </div>
         </div>
       </div>
     </nav>
@@ -193,22 +196,22 @@
         Task Deleted Succesfully!
       </div>
       <div class="container-fluid mt-5">
-        <div class="row sm-12">
-          <div class="col columns">
+        <div class="row">
+          <div class="col-xl-3 col-md-6 col-sm-12 columns">
             <div class="bg-todo"><h3 class="text-center">TODO</h3></div>
             <ul class="list-group mt-3 pt-3" id="todo"></ul>
           </div>
-          <div class="col lg-4 md-6 mx-3 columns">
+          <div class="col-xl-3 col-md-6 col-sm-12  columns">
             <div class="bg-review"><h3 class="text-center">REVIEW</h3></div>
             <ul class="list-group mt-3 pt-3" id="review"></ul>
           </div>
-          <div class="col columns">
+          <div class="col-xl-3 col-md-6 col-sm-12 columns">
             <div class="bg-inprogress">
               <h3 class="text-center">INPROGRESS</h3>
             </div>
             <ul class="list-group mt-3 pt-3" id="inprog"></ul>
           </div>
-          <div class="col columns">
+          <div class="col-xl-3 col-md-6 col-sm-12  columns">
             <div class="bg-done"><h3 class="text-center">DONE</h3></div>
             <ul class="list-group mt-3 pt-3" id="done"></ul>
           </div>
@@ -373,5 +376,6 @@
     <!-- <script src="js/bootstrap.js"></script> -->
     <script src="js/taskManager.js"></script>
     <script src="js/script.js"></script>
+    <script src = "js/geolocation.js"></script>
   </body>
 </html>

@@ -1,4 +1,5 @@
 const taskManager = new TaskManager(0);
+let myModal = new bootstrap.Modal(document.getElementById("myModal"));
 
 // load the storage data
 taskManager.loadStorage();
@@ -15,7 +16,7 @@ function submitItem(event) {
   let due = document.querySelector("#inputDate");
   let status = document.querySelector("#inputStatus");
   let alert = document.querySelector("#alert");
-  var myModal = new bootstrap.Modal(document.getElementById("myModal"));
+
   console.log(myModal);
   let fail = 0;
 
@@ -172,7 +173,6 @@ function submitUpdateItem(event) {
   let due = document.querySelector("#updateDate");
   let status = document.querySelector("#updateStatus");
   let alert = document.querySelector("#alertUpdate");
-  let myModal = new bootstrap.Modal(document.getElementById("myModal"));
   let fail = 0;
 
   event.preventDefault();
@@ -240,6 +240,7 @@ function submitUpdateItem(event) {
 
     clearAll();
     //save locally
+    myModal.hide();
 
     taskManager.saveStorage();
     taskManager.render();
