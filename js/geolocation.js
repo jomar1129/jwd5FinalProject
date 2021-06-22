@@ -14,7 +14,7 @@ let weather = {
     console.log(name, icon, description, temp);
     let weather = document.getElementById("weather");
 
-    let weatherIcon = ` https://openweathermap.org/img/wn/${icon}.png`;
+    let weatherIcon = ` http://openweathermap.org/img/wn/${icon}.png`;
     let convertedTemp = Math.floor(temp - 273.15);
     let code = `<p class= "text-white fw-bold">${name} <img src = ${weatherIcon}> ${convertedTemp}°C <span class="text-capitalize">  ${description}</span> </p> `;
     weather.innerHTML = code;
