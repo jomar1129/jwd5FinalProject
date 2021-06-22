@@ -8,7 +8,7 @@
 body {
   height: 100%;
   background: #328fd6;
-  background: url(./images/background.jpg);
+  background: url(images/background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
