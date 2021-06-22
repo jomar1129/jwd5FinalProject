@@ -50,11 +50,11 @@ let userName = {
 };
 
 let userIcons = {
-  william: "./images/users/william.jpg",
-  anne: "./images/users/anne.jpg",
-  cath: "./images/users/cath.jpg",
-  james: "./images/users/james.jpg",
-  robert: "./images/users/robert.jpg",
+  william: "images/users/william.jpg",
+  anne: "images/users/anne.jpg",
+  cath: "images/users/cath.jpg",
+  james: "images/users/james.jpg",
+  robert: "images/users/robert.jpg",
 };
 class TaskManager {
   constructor(currentId = 0) {
