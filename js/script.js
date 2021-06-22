@@ -15,13 +15,14 @@ function submitItem(event) {
   let due = document.querySelector("#inputDate");
   let status = document.querySelector("#inputStatus");
   let alert = document.querySelector("#alert");
-  let myModal = new bootstrap.Modal(document.getElementById("myModal"));
+  var myModal = new bootstrap.Modal(document.getElementById("myModal"));
+  console.log(myModal);
   let fail = 0;
 
   event.preventDefault();
   event.stopPropagation();
 
-  if (name.value.length > 5) {
+  if (name.value.trim().length > 5) {
     name.classList.add("is-valid");
     name.classList.remove("is-invalid");
   } else {
@@ -30,7 +31,7 @@ function submitItem(event) {
     fail++;
   }
 
-  if (description.value.length > 5) {
+  if (description.value.trim().length > 5) {
     description.classList.add("is-valid");
     description.classList.remove("is-invalid");
   } else {
@@ -39,19 +40,20 @@ function submitItem(event) {
     fail++;
   }
 
-  if (assignee.value.length > 5) {
-    assignee.classList.add("is-valid");
-    assignee.classList.remove("is-invalid");
-  } else {
-    assignee.classList.add("is-invalid");
-    assignee.classList.remove("is-valid");
-    fail++;
-  }
+  // if (assignee.value.trim().length > 5) {
+  //   assignee.classList.add("is-valid");
+  //   assignee.classList.remove("is-invalid");
+  // } else {
+  //   assignee.classList.add("is-invalid");
+  //   assignee.classList.remove("is-valid");
+  //   fail++;
+  // }
 
   const clearAll = () => {
     name.classList.remove("is-valid");
     description.classList.remove("is-valid");
     assignee.classList.remove("is-valid");
+
     form.reset();
   };
 
@@ -65,15 +67,20 @@ function submitItem(event) {
       due.value,
       status.value
     );
-    myModal.hide();
-
     alert.classList.remove("collapse");
     setTimeout(function () {
       alert.classList.add("collapse");
     }, 2000);
 
+    myModal.hide();
+
     clearAll();
+    console.log(myModal);
+
     //save locally
+    // console.log(myModal);
+    // myModal.fade;
+    // console.log(myModal);
 
     taskManager.saveStorage();
     taskManager.render();
@@ -141,8 +148,8 @@ function updateStatus(e) {
     let due = document.querySelector("#updateDate");
     let status = document.querySelector("#updateStatus");
     let form = document.querySelector("#taskFormUpdate");
-    console.log("awit");
-    console.log(task.id);
+    // console.log("awit");
+    // console.log(task.id);
 
     taskName.value = task.name;
     description.value = task.description;
@@ -165,13 +172,13 @@ function submitUpdateItem(event) {
   let due = document.querySelector("#updateDate");
   let status = document.querySelector("#updateStatus");
   let alert = document.querySelector("#alertUpdate");
-  // let myModal = new bootstrap.Modal(document.getElementById("myModal"));
+  let myModal = new bootstrap.Modal(document.getElementById("myModal"));
   let fail = 0;
 
   event.preventDefault();
   event.stopPropagation();
 
-  if (name.value.length > 5) {
+  if (name.value.trim().length > 5) {
     name.classList.add("is-valid");
     name.classList.remove("is-invalid");
   } else {
@@ -180,7 +187,7 @@ function submitUpdateItem(event) {
     fail++;
   }
 
-  if (description.value.length > 5) {
+  if (description.value.trim().length > 5) {
     description.classList.add("is-valid");
     description.classList.remove("is-invalid");
   } else {
@@ -189,14 +196,14 @@ function submitUpdateItem(event) {
     fail++;
   }
 
-  if (assignee.value.length > 5) {
-    assignee.classList.add("is-valid");
-    assignee.classList.remove("is-invalid");
-  } else {
-    assignee.classList.add("is-invalid");
-    assignee.classList.remove("is-valid");
-    fail++;
-  }
+  // if (assignee.trim().value.length > 5) {
+  //   assignee.classList.add("is-valid");
+  //   assignee.classList.remove("is-invalid");
+  // } else {
+  //   assignee.classList.add("is-invalid");
+  //   assignee.classList.remove("is-valid");
+  //   fail++;
+  // }
 
   const clearAll = () => {
     name.classList.remove("is-valid");
@@ -233,6 +240,7 @@ function submitUpdateItem(event) {
 
     clearAll();
     //save locally
+
     taskManager.saveStorage();
     taskManager.render();
   }

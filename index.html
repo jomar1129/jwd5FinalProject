@@ -8,6 +8,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/index.css" />
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    /> -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -22,14 +28,16 @@
     <div
       class="modal fade"
       id="myModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
       tabindex="-1"
-      aria-labelledby="ModalLabel"
+      aria-labelledby="staticBackdropLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add Task</h5>
+            <h5 class="modal-title" id="staticBackdropLabel">Add Task</h5>
             <button
               type="button"
               class="btn-close"
@@ -80,7 +88,8 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group mb-2">
+
+              <!-- <div class="form-group mb-2">
                 <label for="inputAssignee" class="col-sm-2 col-form-label"
                   >Assignee</label
                 >
@@ -96,7 +105,7 @@
                     Assignee must be more than 5 Characters
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="form-group mb-2">
                 <label for="inputDate" class="col-2 col-form-label"
                   >Due Date</label
@@ -112,6 +121,23 @@
                 </div>
               </div>
               <div class="form-group mb-2">
+                <label for="inputAssignee" class="col-2 col-form-label"
+                  >Assignee</label
+                >
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  id="inputAssignee"
+                  required
+                >
+                  <option selected value="william">William Ortega</option>
+                  <option value="anne">Anne Roberts</option>
+                  <option value="cath">Catherine White</option>
+                  <option value="james">James White</option>
+                  <option value="robert">Robert Smith</option>
+                </select>
+              </div>
+              <div class="form-group mb-2">
                 <label for="inputStatus" class="col-2 col-form-label"
                   >Status</label
                 >
@@ -122,12 +148,14 @@
                   required
                 >
                   <option selected value="TODO">TODO</option>
-                  <option value="IN PROGRESS">IN PROGRESS</option>
+                  <option value="INPROGRESS">IN PROGRESS</option>
                   <option value="REVIEW">REVIEW</option>
                   <option value="DONE">DONE</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-primary">Add Task</button>
+              <button id="btnSubmit" type="submit" class="btn btn-primary">
+                Add Task
+              </button>
             </form>
           </div>
           <div class="modal-footer">
@@ -142,53 +170,47 @@
         </div>
       </div>
     </div>
-
-    <div
-      class="
-        container-fluid
-        d-flex
-        flex-column
-        justify-content-center
-        align-items-center
-      "
-    >
-      <h1 class="text-center my-3">Job Task List</h1>
-      <div class="d-grid gap-2 col-6 mx-auto">
-        <button
-          class="btn btn-success btn-lg"
-          type="button"
-          data-bs-toggle="modal"
-          data-bs-target="#myModal"
-        >
-          Add Task
-        </button>
-        <div
-          id="deleteAlert"
-          class="alert alert-success text-center collapse"
-          role="alert"
-        >
-          Task Deleted Succesfully!
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bolder fst-italic " href="#"><h2 class = "text-white">PROTASK</h2></a>
+          <form class="d-flex flex-end">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
         </div>
       </div>
+    </nav>
+    <div class = "m-3 text-white d-flex align-items-center justify-content-between">
+      <h2>Project Sprint     <i class="fas fa-star fa-lg"></i></h2>
+      <i data-bs-toggle="modal" data-bs-target="#myModal"  class="task m-3 fas fa-tasks fa-3x"></i>
+    </div>
+
+      <div
+        id="deleteAlert"
+        class="alert alert-success text-center collapse"
+        role="alert"
+      >
+        Task Deleted Succesfully!
+      </div>
       <div class="container-fluid mt-5">
-        <div class="row">
-          <div class="col lg-6 mx-3 columns">
+        <div class="row sm-12">
+          <div class="col columns">
             <div class="bg-todo"><h3 class="text-center">TODO</h3></div>
-            <ul class="list-group mt-3" id="todo"></ul>
+            <ul class="list-group mt-3 pt-3" id="todo"></ul>
           </div>
-          <div class="col lg-6 mx-3 columns">
+          <div class="col lg-4 md-6 mx-3 columns">
             <div class="bg-review"><h3 class="text-center">REVIEW</h3></div>
-            <ul class="list-group mt-3" id="review"></ul>
+            <ul class="list-group mt-3 pt-3" id="review"></ul>
           </div>
-          <div class="col lg-6 mx-3 columns">
+          <div class="col columns">
             <div class="bg-inprogress">
               <h3 class="text-center">INPROGRESS</h3>
             </div>
-            <ul class="list-group mt-3" id="inprog"></ul>
+            <ul class="list-group mt-3 pt-3" id="inprog"></ul>
           </div>
-          <div class="col lg-6 mx-3 columns">
+          <div class="col columns">
             <div class="bg-done"><h3 class="text-center">DONE</h3></div>
-            <ul class="list-group mt-3" id="done"></ul>
+            <ul class="list-group mt-3 pt-3" id="done"></ul>
           </div>
         </div>
       </div>
@@ -206,7 +228,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Update Task</h5>
+            <h5 class="modal-title" id="modalLabelUpdate">Update Task</h5>
             <button
               type="button"
               class="btn-close"
@@ -257,7 +279,7 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group mb-2">
+              <!-- <div class="form-group mb-2">
                 <label for="updateAssignee" class="col-sm-2 col-form-label"
                   >Assignee</label
                 >
@@ -273,7 +295,7 @@
                     Assignee must be more than 5 Characters
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="form-group mb-2">
                 <label for="updateDate" class="col-2 col-form-label"
                   >Due Date</label
@@ -289,6 +311,23 @@
                 </div>
               </div>
               <div class="form-group mb-2">
+                <label for="updateAssignee" class="col-2 col-form-label"
+                  >Assignee</label
+                >
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  id="updateAssignee"
+                  required
+                >
+                  <option selected value="william">William Ortega</option>
+                  <option value="anne">Anne Roberts</option>
+                  <option value="cath">Catherine White</option>
+                  <option value="james">James White</option>
+                  <option value="robert">Robert Smith</option>
+                </select>
+              </div>
+              <div class="form-group mb-2">
                 <label for="updateStatus" class="col-2 col-form-label"
                   >Status</label
                 >
@@ -299,7 +338,7 @@
                   required
                 >
                   <option selected value="TODO">TODO</option>
-                  <option value="IN PROGRESS">IN PROGRESS</option>
+                  <option value="INPROGRESS">IN PROGRESS</option>
                   <option value="REVIEW">REVIEW</option>
                   <option value="DONE">DONE</option>
                 </select>
@@ -320,13 +359,18 @@
       </div>
     </div>
 
+    <!-- <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script> -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
 
-    <script src="js/bootstrap.js"></script>
+    <!-- <script src="js/bootstrap.js"></script> -->
     <script src="js/taskManager.js"></script>
     <script src="js/script.js"></script>
   </body>

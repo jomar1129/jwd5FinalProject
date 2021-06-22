@@ -6,37 +6,56 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
   // console.log(status);
   console.log(status);
   let newHtml = "";
-  newHtml = `<li class="mx-3 card border-dark mb-3" data-task-id="${id}">
-              <div class="mx-3 header mt-3 d-flex justify-content-between">
-                <h3>TASK#${id + 1}</h3>
-              </div>
+  newHtml = `
+  
+                <li class="mx-3 card border-dark mb-3" data-task-id="${id}">
               <div class="card-body text-dark ">
                 <p class="card-text taskName"><span>Task Name:</span> ${name}</p>
                 <p class="card-text description "><span>Task Description:</span> ${description}</p>
-                <p class="card-text assignee"><span>Assigned To:</span> ${assignedTo}</p>
+               
                 <p class="card-text due"><span>Due Date:</span> ${dueDate}</p>
-                <p class="card-text status"><span>Status:</span><span class =${
-                  status.toLowerCase() == "done"
-                    ? "text-success"
-                    : "text-warning"
-                }> ${status}<span></p>
+                <p class="card-text status"><span>Status:</span><span style ="color:${
+                  taskColor[status.toLowerCase()]
+                }"> ${status}<span></p>
+                <div class = "userIcons">
+                <img src = ${userIcons[assignedTo]}>
+                </div>
               </div>
               <div class="card-footer py-0 d-flex justify-content-end align-items-center">
-                <i class="icons far fa-check-square mx-1 fa-2x text-success btnMark ${
+                <i class="icons far fa-check-square mx-1 fa-lg text-success btnMark ${
                   status.toLowerCase() == "done" ? "d-none" : ""
                 }"></i>
-                <i data-bs-toggle="modal" data-bs-target="#myModalUpdate" class="icons fas fa-pen-square mx-1 fa-2x text-warning btnUpdate"></i>
-                <i  class="icons fas fa-minus-square mx-1 fa-2x text-danger btn-delete"></i>
+        
+                <i data-bs-toggle="modal" data-bs-target="#myModalUpdate" class="icons fas fa-pen-square mx-1 fa-lg text-warning btnUpdate"></i>
+                <i  class="icons fas fa-minus-square mx-1 fa-lg text-danger btn-delete"></i>
               </div>
             </li>`;
 
   return newHtml;
 };
 
-// <button class="btn btn-success btnMark ${
-//   status.toLowerCase() == "done" ? "d-none" : ""
-// }">Mark As Done</button>
-// <button data-bs-toggle="modal" data-bs-target="#myModalUpdate" class="btn btn-warning btnUpdate">Update Task</button>
+let taskColor = {
+  todo: "#2fc8f786",
+  inprogress: "#FAD02C",
+  review: "#FAD02C",
+  done: "#007500",
+};
+
+let userName = {
+  william: "William Ortega",
+  anne: "Anne Roberts",
+  cath: "Catherine White",
+  james: "James White",
+  robert: "Robert Smith",
+};
+
+let userIcons = {
+  william: "/images/users/william.jpg",
+  anne: "/images/users/anne.jpg",
+  cath: "/images/users/cath.jpg",
+  james: "/images/users/james.jpg",
+  robert: "/images/users/robert.jpg",
+};
 class TaskManager {
   constructor(currentId = 0) {
     this.tasks = [];
@@ -93,12 +112,15 @@ class TaskManager {
     let done = [];
     for (let i = 0; i < this.tasks.length; i++) {
       const task = this.tasks[i];
+      const date = new Date(task.dueDate);
+      const formattedDate = date.toDateString();
       const taskHtml = createTaskHtml(
         task.id,
         task.name,
         task.description,
         task.assignedTo,
-        task.dueDate,
+        formattedDate,
+        // task.dueDate,
         task.status
       );
       switch (task.status.toLowerCase()) {
@@ -108,7 +130,7 @@ class TaskManager {
         case "review":
           review.push(taskHtml);
           break;
-        case "in progress":
+        case "inprogress":
           inprogress.push(taskHtml);
           break;
         case "done":
