@@ -18,7 +18,7 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
                   taskColor[status.toLowerCase()]
                 }"> ${status}<span></p>
                 <div class = "userIcons">
-                <img src = ${userIcons[assignedTo]}>
+                <img alt = ${assignedTo} src = ${userIcons[assignedTo]}>
                 </div>
               </div>
               <div class="card-footer py-0 d-flex justify-content-end align-items-center">
@@ -50,11 +50,11 @@ let userName = {
 };
 
 let userIcons = {
-  william: "images/users/william.jpg",
-  anne: "images/users/anne.jpg",
-  cath: "images/users/cath.jpg",
-  james: "images/users/james.jpg",
-  robert: "images/users/robert.jpg",
+  william: "./images/users/william.jpg",
+  anne: "./images/users/anne.jpg",
+  cath: "./images/users/cath.jpg",
+  james: "./images/users/james.jpg",
+  robert: "./images/users/robert.jpg",
 };
 class TaskManager {
   constructor(currentId = 0) {
