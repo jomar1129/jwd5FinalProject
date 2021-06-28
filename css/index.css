@@ -59,6 +59,7 @@ nav a {
 ul {
   background: #dbd6d6;
   scroll-behavior: auto;
+  list-style: none;
 }
 
 .bg-todo {
@@ -90,9 +91,9 @@ ul {
 }
 
 .userIcons {
-  height: 50px;
+  height: 40px;
   padding: 0px;
-  margin: 0px;
+  margin: 5px;
   display: flex;
   flex-direction: row-reverse;
 }
@@ -100,4 +101,12 @@ ul {
 .userIcons > img {
   height: 100%;
   border-radius: 10px;
+}
+
+/* Collpase */
+
+.collapseHeader {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
 }

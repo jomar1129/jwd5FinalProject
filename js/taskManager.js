@@ -8,18 +8,27 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
   let newHtml = "";
   newHtml = `
   
-                <li class="mx-3 card border-dark mb-3" data-task-id="${id}">
+          <li class = "card mx-3 mb-3 cardCollapse">
+           <div class = " mainHeader">
+              <div class="ms-3 mt-1 card collapseHeader d-flex flex-row align-items-center justify-content-between" data-bs-toggle="collapse" href="#collapse${id}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                ${name.toUpperCase()}
+                <div class = "userIcons">
+                    <img alt = ${assignedTo} src = ${userIcons[assignedTo]}>
+                </div>
+              </div>
+            </div>
+            <div class="mx-3 card border-dark mb-3 collapse" data-task-id="${id}" id = "collapse${id}">
               <div class="card-body text-dark ">
-                <p class="card-text taskName"><span>Task Name:</span> ${name}</p>
+                <p class="card-text taskName"><span>Assignee:</span> ${
+                  userName[assignedTo]
+                }</p>
                 <p class="card-text description "><span>Task Description:</span> ${description}</p>
                
                 <p class="card-text due"><span>Due Date:</span> ${dueDate}</p>
                 <p class="card-text status"><span>Status:</span><span style ="color:${
                   taskColor[status.toLowerCase()]
                 }"> ${status}<span></p>
-                <div class = "userIcons">
-                <img alt = ${assignedTo} src = ${userIcons[assignedTo]}>
-                </div>
+   
               </div>
               <div class="card-footer py-0 d-flex justify-content-end align-items-center">
                 <i class="icons far fa-check-square mx-1 fa-lg text-success btnMark ${
@@ -29,10 +38,35 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
                 <i data-bs-toggle="modal" data-bs-target="#myModalUpdate" class="icons fas fa-pen-square mx-1 fa-lg text-warning btnUpdate"></i>
                 <i  class="icons fas fa-minus-square mx-1 fa-lg text-danger btn-delete"></i>
               </div>
-            </li>`;
+            </div>
+        </li>`;
 
   return newHtml;
 };
+
+//ORIGINAL HTML
+//   <li class="mx-3 card border-dark mb-3" data-task-id="${id}">
+//   <div class="card-body text-dark ">
+//     <p class="card-text taskName"><span>Task Name:</span> ${name}</p>
+//     <p class="card-text description "><span>Task Description:</span> ${description}</p>
+
+//     <p class="card-text due"><span>Due Date:</span> ${dueDate}</p>
+//     <p class="card-text status"><span>Status:</span><span style ="color:${
+//       taskColor[status.toLowerCase()]
+//     }"> ${status}<span></p>
+//     <div class = "userIcons">
+//     <img alt = ${assignedTo} src = ${userIcons[assignedTo]}>
+//     </div>
+//   </div>
+//   <div class="card-footer py-0 d-flex justify-content-end align-items-center">
+//     <i class="icons far fa-check-square mx-1 fa-lg text-success btnMark ${
+//       status.toLowerCase() == "done" ? "d-none" : ""
+//     }"></i>
+
+//     <i data-bs-toggle="modal" data-bs-target="#myModalUpdate" class="icons fas fa-pen-square mx-1 fa-lg text-warning btnUpdate"></i>
+//     <i  class="icons fas fa-minus-square mx-1 fa-lg text-danger btn-delete"></i>
+//   </div>
+// </li>
 
 let taskColor = {
   todo: "#2fc8f786",

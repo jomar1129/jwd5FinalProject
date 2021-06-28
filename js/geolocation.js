@@ -81,7 +81,7 @@ let geoCode = {
       console.log("HEY");
       navigator.geolocation.getCurrentPosition(success, console.error);
     } else {
-      weather.fetchWeather("cebu");
+      weather.fetchWeather("Sydney");
     }
   },
 };

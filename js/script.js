@@ -1,6 +1,13 @@
 const taskManager = new TaskManager(0);
 let myModal = new bootstrap.Modal(document.getElementById("myModal"));
-
+let myModalUpdate = new bootstrap.Modal(
+  document.getElementById("myModalUpdate")
+);
+// BLOCK ALL PREVIOUS DATE
+let due = document.querySelector("#inputDate");
+let updateDue = document.querySelector("#updateDate");
+updateDue.min = new Date().toISOString().split("T")[0];
+due.min = new Date().toISOString().split("T")[0];
 // load the storage data
 taskManager.loadStorage();
 // to render current data into html
@@ -13,11 +20,11 @@ function submitItem(event) {
   let name = document.querySelector("#inputTaskName");
   let description = document.querySelector("#inputDescription");
   let assignee = document.querySelector("#inputAssignee");
-  let due = document.querySelector("#inputDate");
+
   let status = document.querySelector("#inputStatus");
   let alert = document.querySelector("#alert");
 
-  console.log(myModal);
+  // console.log(myModal);
   let fail = 0;
 
   event.preventDefault();
@@ -38,6 +45,15 @@ function submitItem(event) {
   } else {
     description.classList.add("is-invalid");
     description.classList.remove("is-valid");
+    fail++;
+  }
+
+  if (due.value !== "") {
+    due.classList.add("is-valid");
+    due.classList.remove("is-invalid");
+  } else {
+    due.classList.add("is-invalid");
+    due.classList.remove("is-valid");
     fail++;
   }
 
@@ -170,7 +186,7 @@ function submitUpdateItem(event) {
   let name = document.querySelector("#updateTaskName");
   let description = document.querySelector("#updateDescription");
   let assignee = document.querySelector("#updateAssignee");
-  let due = document.querySelector("#updateDate");
+
   let status = document.querySelector("#updateStatus");
   let alert = document.querySelector("#alertUpdate");
   let fail = 0;
@@ -195,6 +211,15 @@ function submitUpdateItem(event) {
     description.classList.remove("is-valid");
     fail++;
   }
+
+  // if (updateDue.value !== "") {
+  //   updateDue.classList.add("is-valid");
+  //   updateDue.classList.remove("is-invalid");
+  // } else {
+  //   updateDue.classList.add("is-invalid");
+  //   updateDue.classList.remove("is-valid");
+  //   fail++;
+  // }
 
   // if (assignee.trim().value.length > 5) {
   //   assignee.classList.add("is-valid");
@@ -222,7 +247,7 @@ function submitUpdateItem(event) {
       name.value,
       description.value,
       assignee.value,
-      due.value,
+      updateDue.value,
       status.value
     );
     // taskManager.newTask(
@@ -238,10 +263,10 @@ function submitUpdateItem(event) {
       alert.classList.add("collapse");
     }, 2000);
 
+    myModalUpdate.hide();
+
     clearAll();
     //save locally
-    myModal.hide();
-
     taskManager.saveStorage();
     taskManager.render();
   }
