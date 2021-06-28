@@ -52,11 +52,13 @@ let geoCode = {
       if (request.status === 200) {
         // Success!
         var data = JSON.parse(request.responseText);
+        console.log("NAKUHA BA?");
         console.log(data.results[0]); // print the location
         weather.fetchWeather(data.results[0].components.city);
+        //weather.fetchWeather("Melbourne");
       } else if (request.status <= 500) {
         // We reached our target server, but it returned an error
-
+        weather.fetchWeather("Sydney");
         console.log("unable to geocode! Response code: " + request.status);
         var data = JSON.parse(request.responseText);
         console.log("error msg: " + data.status.message);
@@ -78,7 +80,7 @@ let geoCode = {
       geoCode.reverserGeocode(data.coords.latitude, data.coords.longitude);
     }
     if (navigator.geolocation) {
-      console.log("HEY");
+      // console.log(navigator.geolocation);
       navigator.geolocation.getCurrentPosition(success, console.error);
     } else {
       weather.fetchWeather("Sydney");
