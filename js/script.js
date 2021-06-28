@@ -70,6 +70,7 @@ function submitItem(event) {
     name.classList.remove("is-valid");
     description.classList.remove("is-valid");
     assignee.classList.remove("is-valid");
+    due.classList.remove("is-valid");
 
     form.reset();
   };
